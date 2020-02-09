@@ -1,0 +1,80 @@
+
+MongoDb 
+
+REF : https://www.tutorialspoint.com/mongodb/mongodb_replication.htm
+	 https://www.tutorialkart.com/mongodb/setup-mongodb-replica-set/
+
+
+Install Env
+----------------
+* My machine mongodb install location
+
+	ls /usr/local/Cellar/mongodb/4.0.3_1/
+
+* Default mongo data location
+
+	ls /data/db
+
+* 
+
+Replica set
+————————
+* create new replica set
+
+	mongod --port <XXX> --dbpath <MY_LOCAL_DATA_FOLDER> —replSet <REPLICA_SET_NAME> 
+ 
+	mongod --replSet RS_01 --port 27019  --dbpath /Users/dilipkumar/ex-mongodb/replica-set/my-mongo-rs-data-01 
+	mongod --replSet RS_01 --port 27020  --dbpath /Users/dilipkumar/ex-mongodb/replica-set/my-mongo-rs-data-02 	mongod --replSet RS_01 --port 27021  --dbpath /Users/dilipkumar/ex-mongodb/replica-set/my-mongo-rs-data-03
+
+
+
+
+* Connect mongo client and verify following command(s)
+
+	rs.initiate()
+	rs.conf()
+	rs.status()
+
+* Add configurations
+
+ 	rs.initiate(rsconf);
+
+		rsconf = {
+  			_id: "RS_01",
+  				members: [
+    				{
+     					_id: 0,
+     					host: "localhost:27019"
+    				},
+    				{
+     					_id: 1,
+     					host: "localhost:27020"
+    				}
+   			]
+		};
+
+* Add members to replica set
+
+	rs.add(“HOST_NAME:PORT”)
+
+	rs.add("localhost:27020");
+
+* Check if you are connected to primary or not ?
+
+	db.isMaster()
+
+
+* Testing
+
+  insert data
+
+  	use test;
+
+  	db.test.insert({ "text" : "Welcome" });  
+
+* Check secondary instance 
+
+  	use test;
+
+	db.test.find(); 
+	

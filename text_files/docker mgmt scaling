@@ -1,0 +1,37 @@
+
+docker container scaling
+
+Scaling the App 
+
+Create new app docker-scaling
+ 
+	Define 3 ports between 8080 to 8082
+
+	ports:
+	 - “8080-8082:8080”
+
+docker-compose up --scale docker-scaling-service=2
+
+	docker ps
+
+	2 instances of container running at 8080 & 8081
+
+	can access by URLs
+
+	http://localhost:8080/test/show
+	http://localhost:8081/test/show
+
+Scaling a Software - MongoDb 
+
+start 2 instances 
+	Make sure enough ports defined docker compose file. Define 3 ports between 27017 to 27019  
+
+	ports:
+	 - "27017-27019:27017"
+
+docker-compose up --scale mongo-service=2
+
+	docker ps
+
+	2 instances of "mongo-service" started
+

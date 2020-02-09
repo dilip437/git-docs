@@ -1,0 +1,247 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red5\green61\blue204;\red5\green68\blue254;\red0\green0\blue0;
+\red217\green11\blue5;\red42\green0\blue255;\red42\green0\blue255;\red100\green100\blue100;\red127\green0\blue85;
+\red100\green100\blue100;\red0\green0\blue192;\red106\green62\blue62;\red217\green11\blue5;\red0\green0\blue233;
+\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c33896\c83855;\cssrgb\c0\c38136\c99824;\csgray\c0;
+\cssrgb\c88946\c14202\c0;\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c39216\c39216\c39216;\csgenericrgb\c49804\c0\c33333;
+\csgenericrgb\c39216\c39216\c39216;\csgenericrgb\c0\c0\c75294;\csgenericrgb\c41569\c24314\c24314;\cssrgb\c88946\c14202\c0;\cssrgb\c0\c0\c93333;
+\cssrgb\c0\c0\c93333;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 Netflix zuul & Eureka\
+\
+
+\f1\b \cf2 Zuul with Eureka
+\f0\b0 \cf0 \
+\
+	xxx\
+\
+
+\f1\b \cf2 Only Eureka
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0      Calling \cf3 \CocoaLigature0 countries-service\cf4  from \cf3 capital-service\cf4  via \cf5 \CocoaLigature1 Eureka\
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 	
+\fs28 Eureka Server URL
+\fs36  
+\f2\fs24 \cf6 http://localhost:8761/
+\f0\fs36 \cf0 \
+	
+\fs28 Country App URL
+\fs36  
+\f2\fs24 \cf6 http://localhost:8780/
+\f0\fs36 \cf0 \
+	
+\fs28 Capital App URL
+\fs36  
+\f2\fs24 \cf6 http://localhost:8781/\
+
+\f0\fs36 \cf0 \
+	Eureka Server	
+\f2\fs24 \cf6 http://localhost:8761/eureka
+\f0\fs36 \cf0 \
+	  
+\f2\fs24 server.port=\cf7 8761\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf0     	spring.application.name=\cf7 \ul \ulc7 eureka\ulnone -server\cf0 \
+\
+  	eureka.client.register-with-eureka=\cf7 false\cf0 \
+	eureka.client.fetch-registry=\cf7 false\
+
+\f0\fs36 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf8 	@EnableEurekaServer\cf0 \
+
+\f3\b \cf9 	public
+\f2\b0 \cf0  
+\f3\b \cf9 class
+\f2\b0 \cf0  Application \{\'85\}\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs36 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 	Register Apps in Eureka	
+\f2\fs24 \cf6  
+\f0\fs36 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf10 	\cf0 Register the App 
+\f3\b \cf6 countries-service
+\f2\b0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 	\
+\pard\pardeftab720\partightenfactor0
+\cf0 	server.port = \cf7 8780\cf0 \
+	spring.application.name = \cf7 countries-service\cf0 \
+	eureka.client.serviceUrl.defaultZone = \cf7 http://localhost:8761/eureka\
+
+\f0\fs36 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf8 	@SpringBootApplication\cf0 \
+\cf8 	@\cf0 \ul \ulc0 EnableEurekaClient\ulnone \
+
+\f3\b \cf9 	public
+\f2\b0 \cf0  
+\f3\b \cf9 class
+\f2\b0 \cf0  Application \{...\}
+\f0\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+	Discover Services in Eureka
+\f2\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf8 	\cf0 in another App 
+\f3\b \cf6 capital-service
+\f2\b0 \cf8 \
+	\
+	@Autowired\cf0 \
+     
+\f3\b \cf9 private
+\f2\b0 \cf0  EurekaClient \cf11 discoveryClient\cf0 ;\
+\
+    	InstanceInfo \cf12 instance\cf0  = \cf11 discoveryClient\cf0 .getNextServerFromEureka(\cf7 "countries-service"\cf0 , 
+\f3\b \cf9 false
+\f2\b0 \cf0 );\
+     String \cf12 SERVICE_URL =\cf0  \cf12 instance\cf0 .getHomePageUrl();\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs36 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs24 \cf9 	new
+\f2\b0 \cf0  RestTemplate().exchange(\cf12 SERVICE_URL,\'85);
+\f0\fs36 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 	\
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 	\cf13 Testing
+\fs36 \cf0 \
+
+\fs28 	Call \'97>
+\fs36  
+\f2\fs24 \cf6 http://localhost:8781/country/India
+\f0\fs36 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 	Result \'97> Will show the values from country App same as
+\fs36  
+\f2\fs24 \cf6 http://localhost:8780/country\cf7 \
+
+\f0\fs36 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+
+\f1\b \cf2 Only Zuul
+\f0\b0 \cf0 \
+\
+	Setup your App with Zuul\
+\
+	Two Apps needed\
+		Zuul App & your own App\
+\
+	in Zuul App properties file define following\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 	zuul.routes.service_1.path=\cf7 /\ul api\ulnone /\ul fb\ulnone /users/**\cf0 \
+	zuul.routes.service_1.url=\cf7 http://ms-full-fb-users:9080/users\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+	try URL {\field{\*\fldinst{HYPERLINK "http://localhost:8080/api/fb/users"}}{\fldrslt 
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14 http://localhost:8080/api/fb/users}} \
+	now this will call \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4 \cf15 \expnd0\expndtw0\kerning0
+\ul \ulc15 	       {\field{\*\fldinst{HYPERLINK "http://ms-full-fb-users:9080/users"}}{\fldrslt \cf15 \ulc15 http://localhost:9080/users}}  
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone  or {\field{\*\fldinst{HYPERLINK "http://ms-full-fb-users:9080/users"}}{\fldrslt 
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14 http://ms-full-fb-users:9080/users}}
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14  
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0  (inside docker)
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14  \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 \
+	Test URLs\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4 \cf15 \expnd0\expndtw0\kerning0
+\ul \ulc15 	{\field{\*\fldinst{HYPERLINK "http://localhost:9080/users/all"}}{\fldrslt http://localhost:8080}}/api/fb/users/\
+	{\field{\*\fldinst{HYPERLINK "http://localhost:9080/users/all"}}{\fldrslt http://localhost:8080}}/api/fb/comments/\
+	{\field{\*\fldinst{HYPERLINK "http://localhost:9080/users/all"}}{\fldrslt http://localhost:8080}}/api/facebook/
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf13 Zuul Filters\cf0 \
+\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Ref\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4 \cf15 \expnd0\expndtw0\kerning0
+\ul \ulc15 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone // Eureka\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html"}}{\fldrslt 
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14 https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html}}\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://github.com/spring-guides/gs-service-registration-and-discovery/tree/master/complete"}}{\fldrslt 
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14 https://github.com/spring-guides/gs-service-registration-and-discovery/tree/master/complete}}
+\f4 \cf14 \expnd0\expndtw0\kerning0
+\ul \ulc14 \outl0\strokewidth0 \strokec14 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/microservices-in-spring-eureka"}}{\fldrslt \cf14 \ulc14 https://dzone.com/articles/microservices-in-spring-eureka}}\cf15 \ulc15 \outl0\strokewidth0 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://howtodoinjava.com/spring-cloud/spring-cloud-service-discovery-netflix-eureka/"}}{\fldrslt \cf14 \ulc14 \outl0\strokewidth0 \strokec14 https://howtodoinjava.com/spring-cloud/spring-cloud-service-discovery-netflix-eureka/}}\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://github.com/chuchip/springEureka"}}{\fldrslt \cf14 \ulc14 \outl0\strokewidth0 \strokec14 https://github.com/chuchip/springEureka}}\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf15 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone // Zuul
+\f4 \cf15 \expnd0\expndtw0\kerning0
+\ul \ulc15 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/microservices-communication-zuul-api-gateway-1"}}{\fldrslt \cf15 \ulc15 https://dzone.com/articles/microservices-communication-zuul-api-gateway-1}}\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/how-to-build-an-api-gateway-with-netflix-zuul-spri"}}{\fldrslt \cf15 \ulc15 https://dzone.com/articles/how-to-build-an-api-gateway-with-netflix-zuul-spri}}\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.javatpoint.com/zuul-api-gateway"}}{\fldrslt \cf15 \ulc15 https://www.javatpoint.com/zuul-api-gateway}}\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/"}}{\fldrslt \cf15 \ulc15 https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/}}\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.appsdeveloperblog.com/zuul-api-gateway-tutorial/"}}{\fldrslt \cf15 \ulc15 https://www.appsdeveloperblog.com/zuul-api-gateway-tutorial/}}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone microservice resiliency\
+\
+\
+}

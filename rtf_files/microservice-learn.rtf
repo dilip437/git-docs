@@ -1,0 +1,211 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fswiss\fcharset0 ArialMT;
+\f3\froman\fcharset0 Times-Roman;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red217\green11\blue5;\red67\green67\blue67;\red255\green255\blue255;
+\red0\green0\blue233;\red0\green0\blue233;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c88946\c14202\c0;\cssrgb\c33333\c33333\c33333;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c0\c0\c93333;\cssrgb\c0\c0\c93333;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww22220\viewh12120\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf2 CQRS design pattern ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Micro Service Design strategies
+\f0\b0 \
+\
+	- Reuse - 
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+services can be reused by multiple clients
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+	- Loose Coupling - 
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+consumers are not impacted by changes in the implementation of the service
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+	- Autonomy - 
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+independent apps with own runtime & database
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+	- Fault Tolerance - 
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+circuit break, failure of one service doesn\'92t impact others
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0  \
+	- Composability - 
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+diff. services can be assembled to serve a particular goal
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+	- Discoverability - 
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+clients can easily discover the services and use them\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Micro Service Design Patterns\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+	- 
+\f1\b Aggregator
+\f0\b0  - A service which using other services and process and give final result, other words called orchestration micro service \
+	- 
+\f1\b Proxy
+\f0\b0  - Another service used as proxy service for an existing service. Does some transformation and rendering task\
+	- 
+\f1\b Chained
+\f0\b0  - Multiple services used in a series to perform a task\
+	- 
+\f1\b Branch
+\f0\b0  - Services can be branched to perform diff tasks. Similar to Chain but mutually exclusive.  \
+	- 
+\f1\b Shared Data
+\f0\b0  - Some resources & databases can be shared among multiple services. To avoid duplicates and reworks \
+	- 
+\f1\b Asynchronous Messaging
+\f0\b0  - Services communicates each other asynchronously.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Micro Service Architecture Patterns\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 	- Decomposition\
+	- Database per Service\
+	- API Gateway\
+	- Service Discovery\
+	- Messaging\
+	- Single Service per Host\
+	- Circuit Breaker\
+	- Access Token\
+	- Observability\
+	- UI pattern\
+	 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Micro Service Architecture Principles\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+xxx\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 REST api design
+\f0\b0 \
+\
+xxx\
+\
+
+\f1\b Twelve Factor principles
+\f0\b0 \
+\
+xxx\
+\
+Service Registry\
+\
+	Eureka Server\
+\
+\
+Service Discovery\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://microservices.io/patterns/microservices.html"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://microservices.io/patterns/microservices.html}}	// Patterns\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://medium.com/eleven-labs/cqrs-pattern-c1d6f8517314"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://medium.com/eleven-labs/cqrs-pattern-c1d6f8517314}}	// Patterns\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/microservice-design-patterns"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://dzone.com/articles/microservice-design-patterns}}	// Patterns\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.moesif.com/blog/api-guide/api-design-guidelines/"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://www.moesif.com/blog/api-guide/api-design-guidelines/}}	// Design\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/9-fundamentals-to-a-successful-microservice-design"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://dzone.com/articles/9-fundamentals-to-a-successful-microservice-design}}	// Design\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.nginx.com/blog/microservices-reference-architecture-nginx-twelve-factor-app/"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://www.nginx.com/blog/microservices-reference-architecture-nginx-twelve-factor-app/}}	// Architecture 12 factors \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/}}	// Architecture\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://github.com/Netflix/eureka"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://github.com/Netflix/eureka}}	// Service Discovery\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://microservices.io/patterns/client-side-discovery.html"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://microservices.io/patterns/client-side-discovery.html}}	// Service Discovery\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://microservices.io/patterns/server-side-discovery.html"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://microservices.io/patterns/server-side-discovery.html}}	// Service Discovery\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/service-discovery-in-a-microservices-architecture"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://dzone.com/articles/service-discovery-in-a-microservices-architecture}}	// Service Discovery\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.datawire.io/guide/traffic/service-discovery-microservices/"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://www.datawire.io/guide/traffic/service-discovery-microservices/}}	// Service Discovery\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://avinetworks.com/glossary/container-load-balancing/"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://avinetworks.com/glossary/container-load-balancing/}}	// Container Load balancing \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://techbeacon.com/enterprise-it/scaling-containers-essential-guide-container-clusters"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://techbeacon.com/enterprise-it/scaling-containers-essential-guide-container-clusters}} 		// Container Cluster\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://superuser.openstack.org/articles/run-load-balanced-service-docker-containers-openstack/"}}{\fldrslt 
+\f3 \cf6 \expnd0\expndtw0\kerning0
+\ul \ulc6 \outl0\strokewidth0 \strokec6 https://superuser.openstack.org/articles/run-load-balanced-service-docker-containers-openstack/}}	// Load balanced Service in Docker Container \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f3\fs24 \cf6 \expnd0\expndtw0\kerning0
+\ul \ulc6 \outl0\strokewidth0 \strokec6 \
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.nginx.com/blog/consolidating-your-api-gateway-and-load-balancer-with-nginx/"}}{\fldrslt 
+\fs28 \cf5 \ulc5 \outl0\strokewidth0 https://www.nginx.com/blog/consolidating-your-api-gateway-and-load-balancer-with-nginx/}}
+\f0\fs28 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0  		// \cf7 \CocoaLigature0 API Gateway and Load Balancer with NGINX
+\f4\fs22 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.nginx.com/blog/connecting-applications-part-nginx-microservices/"}}{\fldrslt 
+\f3\fs28 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 \CocoaLigature1 https://www.nginx.com/blog/connecting-applications-part-nginx-microservices/}}
+\f0\fs28 \cf0 \CocoaLigature1  		// \cf7 \CocoaLigature0 Apps with Docker and NGINX\cf0 \CocoaLigature1 \
+\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.edureka.co/blog/microservices-security"}}{\fldrslt 
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 https://www.edureka.co/blog/microservices-security}}	// Security \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f3 \cf5 \expnd0\expndtw0\kerning0
+\ul \ulc5 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://spring.io/guides/gs/circuit-breaker/"}}{\fldrslt \cf5 https://spring.io/guides/gs/circuit-breaker/}}
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone 	// Circuit Breaker\
+}

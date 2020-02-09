@@ -1,0 +1,129 @@
+Elastic search
+
+
+SEARCH by ID
+
+	using ?q=:
+
+	/ index / type / _search ?q=: 
+
+/india/city/_search?q=_id:101
+
+	http://localhost:9200/india/city/_search?q=_id:101
+
+
+FIND ALL
+
+	/ index / type / _search
+
+/india/city/_search
+
+	http://localhost:9200/india/city/_search
+
+
+READ
+
+	/ index / type / id
+
+/india/city/101
+
+	http://localhost:9200/india/city/101
+
+	Method GET
+
+
+DELETE
+
+Same as READ but method is DE.LETE
+
+
+	http://localhost:9200/india/city/101
+
+	Method DELETE
+
+
+UPDATE
+
+Same as CEATE but method is UPDATE
+
+	http://localhost:9200/india/city/101
+
+	Method PUT
+
+	json with diff. data
+
+
+CREATE
+
+index, type, id
+
+	/ index / type / id
+
+/india/city/101
+
+	http://localhost:9200/india/city/101
+
+	Method POST
+
+	{
+    		"name" : "Delhi", 
+    		"code" : "DEL"
+	}
+
+
+	{ "name" : "Mumbai", "code" : "MUM" }
+	{ "name" : "Bangalore", "code" : "BLR" }
+
+
+Response
+
+                                        {
+                                            "_index": "india",
+                                            "_type": "city",
+                                            "_id": "101",
+                                            "_version": 1,
+                                            "result": "created",
+                                            "_shards": {
+                                                "total": 2,
+                                                "successful": 1,
+                                                "failed": 0
+                                            },
+                                            "_seq_no": 0,
+                                            "_primary_term": 1
+                                        }
+
+
+REF
+
+https://mkyong.com/elasticsearch/elasticsearch-hello-world-example/
+
+
+Set Up
+
+Download unzip elastic search
+
+Go to bin folder and type
+
+	./elasticsearch
+
+* Test following url 
+
+	http://localhost:9200/
+
+  {
+  	"name" : "GLAOhek",
+  	"cluster_name" : "elasticsearch",
+  	"cluster_uuid" : "M8InqTM7SLS76ojpWHdR9A",
+  	"version" : {
+    		"number" : "6.2.3",
+    		"build_hash" : "c59ff00",
+    		"build_date" : "2018-03-13T10:06:29.741383Z",
+    		"build_snapshot" : false,
+    		"lucene_version" : "7.2.1",
+    		"minimum_wire_compatibility_version" : "5.6.0",
+    		"minimum_index_compatibility_version" : "5.0.0"
+  	},
+    "tagline" : "You Know, for Search"
+  }
+
+

@@ -1,0 +1,108 @@
+Netflix zuul & Eureka
+
+Zuul with Eureka
+
+	xxx
+
+Only Eureka
+
+     Calling countries-service from capital-service via Eureka
+
+	Eureka Server URL http://localhost:8761/
+	Country App URL http://localhost:8780/
+	Capital App URL http://localhost:8781/
+
+	Eureka Server	http://localhost:8761/eureka
+	  server.port=8761
+    	spring.application.name=eureka-server
+
+  	eureka.client.register-with-eureka=false
+	eureka.client.fetch-registry=false
+
+	@EnableEurekaServer
+	public class Application {…}
+
+	Register Apps in Eureka	 
+
+	Register the App countries-service
+	
+	server.port = 8780
+	spring.application.name = countries-service
+	eureka.client.serviceUrl.defaultZone = http://localhost:8761/eureka
+
+	@SpringBootApplication
+	@EnableEurekaClient
+	public class Application {...}
+
+	Discover Services in Eureka
+
+	in another App capital-service
+	
+	@Autowired
+     private EurekaClient discoveryClient;
+
+    	InstanceInfo instance = discoveryClient.getNextServerFromEureka("countries-service", false);
+     String SERVICE_URL = instance.getHomePageUrl();
+
+	new RestTemplate().exchange(SERVICE_URL,…);
+	
+	Testing
+	Call —> http://localhost:8781/country/India
+	Result —> Will show the values from country App same as http://localhost:8780/country
+
+
+Only Zuul
+
+	Setup your App with Zuul
+
+	Two Apps needed
+		Zuul App & your own App
+
+	in Zuul App properties file define following
+
+	zuul.routes.service_1.path=/api/fb/users/**
+	zuul.routes.service_1.url=http://ms-full-fb-users:9080/users
+
+	try URL http://localhost:8080/api/fb/users 
+	now this will call 
+	       http://localhost:9080/users   or http://ms-full-fb-users:9080/users  (inside docker) 
+
+	Test URLs
+	http://localhost:8080/api/fb/users/
+	http://localhost:8080/api/fb/comments/
+	http://localhost:8080/api/facebook/
+
+
+Zuul Filters
+
+
+* Zuul features
+
+	- Auth Security
+	- Access Hiding
+	- Dynamic Routing
+	- Static Response Handling
+	- Monitoring
+
+
+
+Ref
+
+// Eureka
+https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html
+https://github.com/spring-guides/gs-service-registration-and-discovery/tree/master/complete
+https://dzone.com/articles/microservices-in-spring-eureka
+https://howtodoinjava.com/spring-cloud/spring-cloud-service-discovery-netflix-eureka/
+https://github.com/chuchip/springEureka
+
+// Zuul
+https://dzone.com/articles/microservices-communication-zuul-api-gateway-1
+https://dzone.com/articles/how-to-build-an-api-gateway-with-netflix-zuul-spri
+https://www.javatpoint.com/zuul-api-gateway
+https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/
+
+https://www.appsdeveloperblog.com/zuul-api-gateway-tutorial/
+
+microservice resiliency
+
+

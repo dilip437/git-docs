@@ -1,0 +1,82 @@
+
+CQRS design pattern ?
+
+Micro Service Design strategies
+
+	- Reuse - services can be reused by multiple clients
+	- Loose Coupling - consumers are not impacted by changes in the implementation of the service
+	- Autonomy - independent apps with own runtime & database
+	- Fault Tolerance - circuit break, failure of one service doesn’t impact others 
+	- Composability - diff. services can be assembled to serve a particular goal
+	- Discoverability - clients can easily discover the services and use them
+
+Micro Service Design Patterns
+
+	- Aggregator - A service which using other services and process and give final result, other words called orchestration micro service 
+	- Proxy - Another service used as proxy service for an existing service. Does some transformation and rendering task
+	- Chained - Multiple services used in a series to perform a task
+	- Branch - Services can be branched to perform diff tasks. Similar to Chain but mutually exclusive.  
+	- Shared Data - Some resources & databases can be shared among multiple services. To avoid duplicates and reworks 
+	- Asynchronous Messaging - Services communicates each other asynchronously.
+
+Micro Service Architecture Patterns
+
+	- Decomposition
+	- Database per Service
+	- API Gateway
+	- Service Discovery
+	- Messaging
+	- Single Service per Host
+	- Circuit Breaker
+	- Access Token
+	- Observability
+	- UI pattern
+	 
+Micro Service Architecture Principles
+
+xxx
+
+REST api design
+
+xxx
+
+Twelve Factor principles
+
+xxx
+
+Service Registry
+
+	Eureka Server
+
+
+Service Discovery
+
+https://microservices.io/patterns/microservices.html	// Patterns
+https://medium.com/eleven-labs/cqrs-pattern-c1d6f8517314	// Patterns
+https://dzone.com/articles/microservice-design-patterns	// Patterns
+
+https://www.moesif.com/blog/api-guide/api-design-guidelines/	// Design
+https://dzone.com/articles/9-fundamentals-to-a-successful-microservice-design	// Design
+
+https://www.nginx.com/blog/microservices-reference-architecture-nginx-twelve-factor-app/	// Architecture 12 factors 
+https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/	// Architecture
+
+https://github.com/Netflix/eureka	// Service Discovery
+https://microservices.io/patterns/client-side-discovery.html	// Service Discovery
+https://microservices.io/patterns/server-side-discovery.html	// Service Discovery
+
+https://dzone.com/articles/service-discovery-in-a-microservices-architecture	// Service Discovery
+https://www.datawire.io/guide/traffic/service-discovery-microservices/	// Service Discovery
+
+https://avinetworks.com/glossary/container-load-balancing/	// Container Load balancing 
+https://techbeacon.com/enterprise-it/scaling-containers-essential-guide-container-clusters 		// Container Cluster
+https://superuser.openstack.org/articles/run-load-balanced-service-docker-containers-openstack/	// Load balanced Service in Docker Container 
+
+
+https://www.nginx.com/blog/consolidating-your-api-gateway-and-load-balancer-with-nginx/ 		// API Gateway and Load Balancer with NGINX
+https://www.nginx.com/blog/connecting-applications-part-nginx-microservices/ 		// Apps with Docker and NGINX
+
+
+https://www.edureka.co/blog/microservices-security	// Security 
+
+https://spring.io/guides/gs/circuit-breaker/	// Circuit Breaker

@@ -1,0 +1,36 @@
+
+* pull images for hub
+docker pull mysql:5.7
+
+* remove un wanted containers
+docker rmi $(docker images -aq -f 'dangling=true')
+
+* build image
+docker image build <folder_has_Dockerfile> -t <image_name>
+	docker image build . -t simple-first-docker-image
+
+* run docker
+docker run --name <container-name> -p 8080:8080 -t <image-name>
+	docker run -p 8080:8080 -t simple-first-docker-image
+ 	docker run --name my-docker-name -p 8080:8080 -t simple-first-docker-image
+
+* stop docker
+docker stop <CONTAINER ID>
+	docker stop 2473bf645535
+
+* volume mapping
+
+  create  - docker volume create --name host_dir
+  mapping - docker run -v host_dir:/container_dir
+	  
+
+
+Docker Swarm
+---------------
+https://docs.docker.com/engine/swarm/swarm-mode/
+https://docs.docker.com/storage/volumes/
+https://docs.docker.com/engine/swarm/stack-deploy/
+https://stackoverflow.com/questions/34809646/what-is-the-purpose-of-volume-in-dockerfile
+https://semaphoreci.com/community/tutorials/running-applications-on-a-docker-swarm-mode-cluster
+https://blog.codeship.com/running-services-within-docker-swarm/
+https://rominirani.com/docker-swarm-tutorial-b67470cf8872

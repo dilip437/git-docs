@@ -1,0 +1,33 @@
+
+sudo netstat -tulpn | grep 5672
+sudo service rabbitmq-server stop
+
+docker rmi $(docker images -aq -f 'dangling=true')
+
+docker image build <folder> -t <image_name>
+	docker image build . -t simple-first-docker-image
+
+docker run -p 8080:8080 -t simple-first-docker-image
+
+
+Mac commands
+-------------
+
+
+Find process using PORT
+
+netstat -vanp tcp | grep "9000"
+
+
+
+Thanks,
+Dilip
++91-9739806571
+
+
+
+
+
+
+
+
